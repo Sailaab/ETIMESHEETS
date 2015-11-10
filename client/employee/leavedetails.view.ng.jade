@@ -1,0 +1,16 @@
+.leavedetails(layout='row')
+  span(flex='')
+  div(layout='column')
+    h1 Here are the details of the leave
+    form.md-whiteframe-z1(name='form', ng-submit='save()', layout-padding='')
+      md-input-container
+        label Name
+        input(ng-model='leaveRequest.name', placeholder='Name')
+      md-input-container
+        label Description
+        input(ng-model='leaveRequest.description', placeholder='Description')
+      div(layout='row')
+        input.md-button(type='submit', value='Save')
+        md-button(ng-click='reset()') Reset
+        md-button(ng-href='/leave') Cancel
+  span(flex='')

@@ -1,0 +1,37 @@
+.manageemployeeEdits(layout='row')
+  span(flex='')
+  md-whiteframe(layout='column', flex='50')
+    div(layout='row', layout-align='space-around center')
+      div 
+      h1 Details
+    form(layout='column')
+      div Name
+          md-input-container
+          md-icon(md-svg-icon='content:ic_mail_24px')
+          input(type='text', ng-model='fname', placeholder='First Name', aria-label='name')
+          md-input-container
+          md-icon(md-svg-icon='content:ic_mail_24px')
+          input(type='text', ng-model='mname', placeholder='Middle Name', aria-label='name')
+          md-input-container
+          md-icon(md-svg-icon='content:ic_mail_24px')
+          input(type='text', ng-model='lname', placeholder='Last Name', aria-label='name')
+      div Contact
+      md-input-container
+        md-icon(md-svg-icon='content:ic_mail_24px')
+        input(type='text', ng-model='contact', placeholder='contacts', aria-label='contact') 
+      div Address
+      md-input-container
+        md-icon(md-svg-icon='content:ic_mail_24px')
+        input(type='text', ng-model='address', placeholder='address', aria-label='address')
+      div Email     
+        md-input-container
+          md-icon(md-svg-icon='content:ic_mail_24px')
+          input(type='email', ng-model='email', placeholder='Email', aria-label='email')
+        md-input-container
+          md-icon(md-svg-icon='content:ic_mail_24px')
+          input(type='email', ng-model='secondaryemail', placeholder='Secondary Email', aria-label='secondaryemail') 
+      div(layout='row')
+        input.md-button(type='submit', value='Save' ng-click='save()')
+        md-button(ng-href='/manageemployee') Cancel
+
+  span(flex='')

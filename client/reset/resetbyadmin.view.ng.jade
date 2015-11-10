@@ -1,0 +1,18 @@
+md-content(layout='row')
+      span(flex='')
+      md-whiteframe(layout='column', flex='50')
+        div(layout='row', layout-align='space-around center')
+          div Login with:
+          md-button Twitter
+          md-button Facebook
+        .md-warn(ng-show='rpc.error')
+          small {{ rpc.error }}
+        form(layout='column')
+          md-input-container
+            md-icon(md-svg-icon='content:ic_mail_24px')
+            input(type='password', ng-model='newPlaintextPassword', placeholder='password', aria-label='password')
+          md-button.md-raised.md-primary(ng-click='resetpsw()', aria-label='login')
+            | Reset password
+        div(layout='row', layout-align='end center')
+          a(href='/login') Login
+      span(flex='')

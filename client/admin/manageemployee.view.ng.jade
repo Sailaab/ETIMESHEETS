@@ -1,0 +1,27 @@
+
+.userdetails-list(layout='row')
+      span(flex='')
+      div(layout='column')
+        h1 Users Management
+        table
+          tr
+            th S.N
+            th
+              a(href='#', ng-click="sortType = 'name'; sortReverse = !sortReverse") Name
+            th
+              a(href='#', ng-click="sortType = 'contact'; sortReverse = !sortReverse") Contact
+            th
+              a(href='#', ng-click="sortType = 'mail'; sortReverse = !sortReverse") Email Address
+          tr(dir-paginate='user in users |  orderBy:sortType:sortReverse | itemsPerPage: perPage', total-items='usersCount.count',  current-page='page')
+            td {{$index + 1}}
+            td
+              | {{user.profile[0].fname + ' ' + user.profile[0].mname + ' ' + user.profile[0].lname}}
+            td {{user.profile[0].contact}}
+            td {{user.emails[0].address}}
+            td
+              a(href='/manageemployeeEdit/{{user._id}}')  Edit &nbsp
+              a(href='/reset/{{user._id}}') Reset
+              button(ng-click='remove(user._id)') Remove
+      span(flex='')
+
+     

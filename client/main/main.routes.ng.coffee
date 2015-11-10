@@ -1,0 +1,161 @@
+'use strict'
+
+angular.module 'etimesheetApp'
+.config ($stateProvider) ->
+  $stateProvider
+  .state 'main',
+    url: '/'
+    templateUrl: 'client/main/main.view.html'
+    controller: 'MainCtrl'
+
+  .state 'admin',
+    url: '/admin'
+    templateUrl: 'client/admin/admin.view.html'
+    controller: 'AdminCtrl'
+    resolve:
+      currentUser: ['$meteor', ($meteor) ->
+        $meteor.requireValidUser((user)->
+          if(user._id=="BhwRmjwMgsr7FtSSX") 
+             return true;
+           return 'UNAUTHORIZED'
+         )
+      ]        
+
+  .state 'not-verified',  
+    url: '/notverified/:userId'
+    templateUrl: 'client/main/not-verified.view.html'
+    controller: 'NotverifiedCtrl'     
+  
+  .state 'employee',
+    url: '/employee'
+    templateUrl: 'client/employee/employee.view.html'
+    controller: 'EmployeeCtrl'
+    resolve:
+      currentUser: ['$meteor', ($meteor) ->
+        $meteor.requireUser()
+      ]    
+
+  .state 'timesheet',
+    url: '/timesheet'
+    templateUrl: 'client/employee/timesheet.view.html'
+    controller: 'TimesheetCtrl'
+    resolve:
+      currentUser: ['$meteor', ($meteor) ->
+        $meteor.requireUser()
+      ]       
+
+  .state 'leave',
+    url: '/leave'
+    templateUrl: 'client/employee/leave.view.html'
+    controller: 'leaveCtrl'
+    resolve:
+      currentUser: ['$meteor', ($meteor) ->
+        $meteor.requireUser()
+      ]
+
+   .state 'leavedetails',
+    url: '/leave/:leaveRequestid'
+    templateUrl: 'client/employee/leavedetails.view.html'
+    controller: 'leavedetailsCtrl'
+    resolve:
+      currentUser: ['$meteor', ($meteor) ->
+        $meteor.requireUser()
+      ] 
+
+     
+         
+  .state 'manageemployee',
+    url: '/manageemployee'
+    templateUrl: 'client/admin/manageemployee.view.html'
+    controller: 'ManageEmployeeCtrl'
+    resolve:
+      currentUser: ['$meteor', ($meteor) ->
+        $meteor.requireValidUser((user)->
+          if(user._id=="BhwRmjwMgsr7FtSSX") 
+             return true;
+           return 'UNAUTHORIZED'
+         )
+      ]       
+
+  .state 'manageemployeeEdit',
+    url: '/manageemployeeEdit/:userId'
+    templateUrl: 'client/admin/manageemployeeEdit.view.html'
+    controller: 'ManageEmployeeEditCtrl'
+    resolve:
+      currentUser: ['$meteor', ($meteor) ->
+        $meteor.requireValidUser((user)->
+          if(user._id=="BhwRmjwMgsr7FtSSX") 
+             return true;
+           return 'UNAUTHORIZED'
+         )
+      ]      
+
+  .state 'LeaveCtrls',
+    url: '/viewleave'
+    templateUrl: 'client/admin/leave.view.html'
+    controller: 'LeaveControl'
+    resolve:
+      currentUser: ['$meteor', ($meteor) ->
+        $meteor.requireValidUser((user)->
+          if(user._id=="BhwRmjwMgsr7FtSSX") 
+             return true;
+           return 'UNAUTHORIZED'
+         )
+      ]    
+
+  .state 'TimesheetCtrls',
+    url: '/viewtimesheet'
+    templateUrl: 'client/admin/timesheet.view.html'
+    controller: 'TimesheetControl'
+    resolve:
+      currentUser: ['$meteor', ($meteor) ->
+        $meteor.requireValidUser((user)->
+          if(user._id=="BhwRmjwMgsr7FtSSX") 
+             return true;
+           return 'UNAUTHORIZED'
+         )
+      ]    
+
+  .state 'logout',
+    url: '/logout'
+    resolve: 'logout': ['$meteor', '$state'
+     ($meteor, $state) ->
+      $meteor.logout().then (->
+       $state.go 'main'
+       return
+      ), (err) ->
+       console.log 'logout error - ', err
+       return
+     ]
+
+  .state 'dashboard',
+    url: '/dashboard'
+    resolve: 'dashboard': [ '$state','$scope'
+     ( $state, $scope) ->
+      if($scope.currentUser.emails[0].address=="ghostrider_sailaab@yahoo.com")
+        $state.go 'admin'
+        console.log("goes to admin")
+      else
+        $state.go 'employee'
+        console.log("goes to employee")
+       return
+      
+     ]
+
+  # .state 'dashboard',
+  #   url: '/dashboard'
+  #   resolve: ['$meteor', '$state'
+  #    ($meteor, $state) ->
+  #     console.log ($meteor.user._id+ 'hello')
+  #     console.log(Meteor.userId())
+  #     if(Meteor.userId()=="BhwRmjwMgsr7FtSSX")
+  #       # $state.go 'admin'
+  #       console.log("goes to admin")
+  #     else
+  #       $state.go 'employee'
+  #       console.log("goes to employee")
+  #      return
+      
+  #    ]
+    
+  

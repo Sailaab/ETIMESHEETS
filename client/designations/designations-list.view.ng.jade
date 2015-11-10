@@ -1,0 +1,23 @@
+.designations-list(layout='row')
+  span(flex='')
+  div(layout='column')
+    h1 Designations
+    form.md-whiteframe-z1(ng-submit='save()', name='form', novalidate='', layout-padding='')
+      p Add a designation
+      md-input-container
+        label Name
+        input(ng-model='newDesignation.name', placeholder='Name')
+      Label Description
+      textarea(ng-model='newDesignation.description',placeholder='Description')
+      input.md-button(type='submit', value='Add')
+    
+    ul
+      li(dir-paginate='designation in designations | itemsPerPage: perPage', total-items='designationsCount.count',  current-page='page')
+        p 
+          a(href='/designations/{{designation._id}}') {{ designation.name }}
+          
+          button(ng-click='remove(designation._id)') &times;
+    dir-pagination-controls.md-accent(on-page-change='pageChanged(newPageNumber)')
+
+    
+  span(flex='')

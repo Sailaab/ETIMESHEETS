@@ -1,0 +1,20 @@
+.leave(layout='row')
+  span(flex='') 
+    table
+      tr
+        th Start Date
+        th End Date
+        th Leave Name
+        th Employee
+        th Asked Date
+        th Approved
+      tr(ng-repeat='leaveRequest in leaveRequests')
+        td {{leaveRequest.startDate}}
+        td {{leaveRequest.endDate}}
+        td {{leaveRequest.name}}
+        td {{leaveRequest.user}}
+        td {{leaveRequest.askDate}}
+        td 
+          button(ng-click='verifyleave(leaveRequest._id)') Verify It
+        td 
+          button(ng-click='cancelleave(leaveRequest._id)') Cancel it   

@@ -1,0 +1,62 @@
+.register
+    md-content(layout='row')
+      span(flex='')
+      md-whiteframe(layout='column', flex='50')
+        div(layout='row', layout-align='space-around center')
+          div 
+          h1 Register
+        .md-warn(ng-show='error')
+          small {{ error }}
+        form(layout='column' name='myForm')
+          div Name
+              md-input-container
+              md-icon(md-svg-icon='content:ic_mail_24px')
+              input(type='text', required ng-model='profile[0].fname', placeholder='First Name', aria-label='name')
+              md-input-container
+              md-icon(md-svg-icon='content:ic_mail_24px')
+              input(type='text', ng-model='profile[0].mname', placeholder='Middle Name', aria-label='name')
+              md-input-container
+              md-icon(md-svg-icon='content:ic_mail_24px')
+              input(type='text', ng-model='profile[0].lname', placeholder='Last Name', aria-label='name')
+          br
+          br
+
+          div Contact      
+              md-input-container
+              md-icon(md-svg-icon='content:ic_mail_24px')
+              input(type='text', required ng-model='profile[0].contact', placeholder='contact', aria-label='contact') 
+          br 
+          br
+
+          div Address    
+              md-input-container
+              md-icon(md-svg-icon='content:ic_mail_24px')
+              input(type='text', ng-model='profile[0].address', placeholder='address', aria-label='address')
+          br
+          br
+
+          div Email     
+              md-input-container
+              md-icon(md-svg-icon='content:ic_mail_24px')
+              input(type='email', required  ng-model='email', placeholder='Email', aria-label='email')
+              md-input-container
+              md-icon(md-svg-icon='content:ic_mail_24px')
+              input(type='email', ng-model='profile[0].secondaryemail', placeholder='Secondary Email', aria-label='secondaryemail') 
+          br 
+          br
+
+          div Password     
+              md-input-container
+              md-icon(md-svg-icon='action:ic_lock_open_24px')
+              input(type='password', ng-model='password', placeholder='password', aria-label='password')
+              md-input-container
+              md-icon(md-svg-icon='action:ic_lock_open_24px')
+              input(type='password', ng-model='repassword', placeholder='Retype password', aria-label='Retype password')  
+          br
+          br
+
+          md-button.md-raised.md-primary(ng-disabled="myForm.$invalid" , ng-click='register()')
+            | Create Account
+        div(layout='row', layout-align='end center')
+          a(href='/login') Login
+      span(flex='')

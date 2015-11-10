@@ -1,0 +1,27 @@
+.products-list(layout='row')
+  span(flex='')
+  div(layout='column')
+    h1 Products
+    form.md-whiteframe-z1(ng-submit='save()', name='form', novalidate='', layout-padding='')
+      p Add a product
+      md-input-container
+        label Name
+        input(ng-model='newProduct.name', placeholder='Name')
+      input.md-button(type='submit', value='Add')
+    div(layout='row', layout-padding='')
+      md-input-container(flex='65')
+        label Search
+        input(type='search', ng-model='search', placeholder='Search')
+      md-select(ng-model='orderProperty', flex='35')
+        md-option(value='1') Ascending
+        md-option(value='-1') Descending
+
+    ul
+      li(dir-paginate='product in products | itemsPerPage: perPage', total-items='productsCount.count',  current-page='page')
+        p 
+          a(href='/products/{{product._id}}') {{ product.name }}
+          button(ng-click='remove(product)') &times;
+    dir-pagination-controls.md-accent(on-page-change='pageChanged(newPageNumber)')
+
+    p Total number of products: {{productsCount.count}}
+  span(flex='')

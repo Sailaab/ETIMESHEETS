@@ -1,0 +1,29 @@
+.leaveRequests-list(layout='row')
+  span(flex='')
+  div(layout='column', style='width:900px;height:')
+    form.md-whiteframe-z1(ng-submit='save()', name='form', novalidate='', layout-padding='')
+      h1 Add Leave Request
+      md-input-container
+        input(ng-model='newLeaveRequest.name', placeholder='Leave Name' type="text")
+      div(layout='row', layout-align='space-around center') 
+            div Leave
+                
+              md-datepicker(ng-model='startDate', md-placeholder='From')
+            
+              md-datepicker(ng-model='endDate', md-placeholder='To')
+      md-input-container
+        input(ng-model='newLeaveRequest.reason', placeholder='Leave Reason' type="textarea")
+      input.md-button(type='submit', value='Submit')
+
+    ul
+      li(dir-paginate='leaveRequest in leaveRequests | itemsPerPage: perPage', total-items='leaveRequest.count',  current-page='page')
+        p 
+          {{ leaveRequest.name }} 
+          &nbsp {{leaveRequest.verified}}
+          button(ng-click='remove(leaveRequest._id)') &times; 
+    dir-pagination-controls.md-accent(on-page-change='pageChanged(newPageNumber)')  
+    
+
+    p Total number of leaveRequests: {{leaveRequestsCount.count}}
+    
+  span(flex='')
