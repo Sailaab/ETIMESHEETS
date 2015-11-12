@@ -130,17 +130,15 @@ angular.module 'etimesheetApp'
 
   .state 'dashboard',
     url: '/dashboard'
-    resolve: 'dashboard': [ '$state','$scope'
-     ( $state, $scope) ->
-      if($scope.currentUser.emails[0].address=="ghostrider_sailaab@yahoo.com")
-        $state.go 'admin'
-        console.log("goes to admin")
-      else
-        $state.go 'employee'
-        console.log("goes to employee")
-       return
-      
-     ]
+    resolve:
+      currentUser: ['$meteor','$state', ($meteor,$state) ->
+        $meteor.requireValidUser((user)->
+          if(user._id=="BhwRmjwMgsr7FtSSX") 
+             return $state.go 'admin'
+           return $state.go 'employee'
+         )
+      ]    
+
 
   # .state 'dashboard',
   #   url: '/dashboard'
@@ -154,8 +152,5 @@ angular.module 'etimesheetApp'
   #     else
   #       $state.go 'employee'
   #       console.log("goes to employee")
-  #      return
-      
-  #    ]
-    
-  
+  #      return     
+  #    ]  
