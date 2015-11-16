@@ -18,12 +18,32 @@
       md-select(ng-model='orderProperty', flex='35')
         md-option(value='1') Ascending
         md-option(value='-1') Descending
+    table
+      tr
+        th S.N
+        th
+          a(href='#', ng-click="sortType = 'name'; sortReverse = !sortReverse") Name
+        th
+          a(href='#', ng-click="sortType = 'address'; sortReverse = !sortReverse") Address
+        th
+          a(href='#', ng-click="sortType = 'contact'; sortReverse = !sortReverse") Contact
+        th
+          a(href='#', ng-click="sortType = 'email'; sortReverse = !sortReverse") Email
+      tr(dir-paginate='organization in organizations | itemsPerPage: perPage |  orderBy:sortType:sortReverse', total-items='organizationsCount.count',  current-page='page')
+        td {{$index + 1}}
+        td {{organization.name}}
+        td {{organization.address}}
+        td {{organization.contact}}
+        td {{organization.email}}
+        td
+          a(href='/organizations/{{organization._id}}')  Edit 
+          button(ng-click='remove(organization._id)') Remove
 
-    ul
-      li(dir-paginate='organization in organizations | itemsPerPage: perPage', total-items='organizationsCount.count',  current-page='page')
-        p 
-          a(href='/organization/{{organization._id}}') {{ organization.name }}
-          button(ng-click='remove(organization._id)') &times;
+    //- ul
+    //-   li(dir-paginate='organization in organizations | itemsPerPage: perPage', total-items='organizationsCount.count',  current-page='page')
+    //-     p 
+    //-       a(href='/organization/{{organization._id}}') {{ organization.name }}
+    //-       button(ng-click='remove(organization._id)') &times;
     dir-pagination-controls.md-accent(on-page-change='pageChanged(newPageNumber)')
 
     p Total number of organization: {{organizationsCount.count}}

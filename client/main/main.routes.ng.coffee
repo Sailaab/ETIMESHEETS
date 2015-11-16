@@ -15,7 +15,7 @@ angular.module 'etimesheetApp'
     resolve:
       currentUser: ['$meteor', ($meteor) ->
         $meteor.requireValidUser((user)->
-          if(user._id=="BhwRmjwMgsr7FtSSX") 
+          if(user.profile[0].role=="admin") 
              return true;
            return 'UNAUTHORIZED'
          )
@@ -71,7 +71,7 @@ angular.module 'etimesheetApp'
     resolve:
       currentUser: ['$meteor', ($meteor) ->
         $meteor.requireValidUser((user)->
-          if(user._id=="BhwRmjwMgsr7FtSSX") 
+          if(user.profile[0].role=="admin") 
              return true;
            return 'UNAUTHORIZED'
          )
@@ -84,7 +84,7 @@ angular.module 'etimesheetApp'
     resolve:
       currentUser: ['$meteor', ($meteor) ->
         $meteor.requireValidUser((user)->
-          if(user._id=="BhwRmjwMgsr7FtSSX") 
+          if(user.profile[0].role=="admin") 
              return true;
            return 'UNAUTHORIZED'
          )
@@ -97,7 +97,7 @@ angular.module 'etimesheetApp'
     resolve:
       currentUser: ['$meteor', ($meteor) ->
         $meteor.requireValidUser((user)->
-          if(user._id=="BhwRmjwMgsr7FtSSX") 
+          if(user.profile[0].role=="admin") 
              return true;
            return 'UNAUTHORIZED'
          )
@@ -133,7 +133,7 @@ angular.module 'etimesheetApp'
     resolve:
       currentUser: ['$meteor','$state', ($meteor,$state) ->
         $meteor.requireValidUser((user)->
-          if(user._id=="BhwRmjwMgsr7FtSSX") 
+          if(user.profile[0].role=="admin") 
              return $state.go 'admin'
            return $state.go 'employee'
          )

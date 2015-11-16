@@ -31,7 +31,10 @@ Meteor.methods
     Departments.update(departmentId,{$set:{'deleted':1}})  
 
   organizationDelete:(organizationId) ->
-    Organizations.update(organizationId,{$set:{'deleted':1}})  
+    Organizations.update(organizationId,{$set:{'deleted':1}})
+
+  sailaabDelete:(sailaabId) ->
+    Sailaabs.update(sailaabId,{$set:{'deleted':1}})
 
   update:(user,email, address, fname, mname, lname, contact, secondaryemail) ->
     Meteor.users.update({ _id: user },{$set:{"emails.0.address":email}})
