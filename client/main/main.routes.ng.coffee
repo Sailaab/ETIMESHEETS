@@ -135,6 +135,7 @@ angular.module 'etimesheetApp'
         $meteor.requireValidUser((user)->
           if(user.profile[0].role=="admin") 
              return $state.go 'admin'
+          if(user.emails[0].verified==true)
            return $state.go 'employee'
          )
       ]    
