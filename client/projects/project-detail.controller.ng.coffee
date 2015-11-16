@@ -2,6 +2,8 @@
 
 angular.module 'etimesheetApp'
 .controller 'ProjectDetailCtrl', ($scope, $meteor, $state, $stateParams,$mdToast) ->
+  
+  $scope.idx=0
  
 
 
@@ -20,6 +22,8 @@ angular.module 'etimesheetApp'
     }, $scope.getReactively('search')).then () ->
       $scope.projectsCount = $scope.$meteorObject Counts, 'numberOfProjects', false
     $meteor.subscribe('users')
+  $scope.member=$scope.project.member
+  console.log($scope.member)
 
   $meteor.session 'projectsCounter'
   .bind $scope, 'page'
@@ -30,7 +34,7 @@ angular.module 'etimesheetApp'
     else
       return false
   
-  $scope.exist=(users,list)->
+  $scope.exists=(users,list)->
     return list.indexOf(users) > -1
 
   $scope.toggle =  (users, list)->
@@ -41,13 +45,13 @@ angular.module 'etimesheetApp'
      list.push(users)
     
   $scope.save = () ->
-    $scope.newProject.deleted=0
-    $scope.newProject.isActive=1
-    $scope.newProject.member=$scope.member
+    $scope.project.deleted=0
+    $scope.project.isActive=1
+    $scope.project.member=$scope.member
     console.log($scope.member)
-    $scope.projects.save $scope.newProject
-    $scope.newProject = undefined
-    alert('Project Saved') 
+    $scope.projects.save $scope.project
+    $scope.project = undefined
+    $mdToast.show($mdToast.simple().content('Project Saved Sucessfully')) 
     document.getElementById("form").reset()
     $scope.member=[]
     $scope.idx=0 
