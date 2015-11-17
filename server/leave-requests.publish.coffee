@@ -15,5 +15,5 @@ Meteor.publish 'leaveRequestsadmin', (options, searchString) ->
     '_id':
       '$regex': '.*' + (searchString or '') + '.*'
       '$options': 'i'
-  Counts.publish this, 'numberOfLeaveRequests', LeaveRequests.find(), noReady: true
+  Counts.publish this, 'numberOfLeaveRequests', LeaveRequests.find({verified:"Not-Approved"}), noReady: true
   LeaveRequests.find where, options   

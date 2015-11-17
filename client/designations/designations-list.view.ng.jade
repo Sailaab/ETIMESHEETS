@@ -11,12 +11,26 @@
       textarea(ng-model='newDesignation.description',placeholder='Description')
       input.md-button(type='submit', value='Add')
     
-    ul
-      li(dir-paginate='designation in designations | itemsPerPage: perPage', total-items='designationsCount.count',  current-page='page')
-        p 
-          a(href='/designations/{{designation._id}}') {{ designation.name }}
+    //- ul
+    //-   li(dir-paginate='designation in designations | itemsPerPage: perPage', total-items='designationsCount.count',  current-page='page')
+    //-     p 
+    //-       a(href='/designations/{{designation._id}}') {{ designation.name }}
           
-          button(ng-click='remove(designation._id)') &times;
+    //-       button(ng-click='remove(designation._id)') &times;
+    table
+      tr
+        th S.N
+        th
+          a(href='#', ng-click="sortType = 'Name'; sortReverse = !sortReverse") Name
+        th
+          a(href='#', ng-click="sortType = 'Description'; sortReverse = !sortReverse") Description
+      tr(dir-paginate='designation in designations | itemsPerPage: perPage |  orderBy:sortType:sortReverse', total-items='designationsCount.count',  current-page='page')
+        td {{$index + 1}}
+        td {{designation.name}}
+        td {{designation.description}}
+        td
+           a(href='/designations/{{designation._id}}')  Edit 
+           button(ng-click='remove(designation._id)') Remove            
     dir-pagination-controls.md-accent(on-page-change='pageChanged(newPageNumber)')
 
     

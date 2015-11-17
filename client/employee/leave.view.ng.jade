@@ -15,15 +15,15 @@
         input(ng-model='newLeaveRequest.reason', placeholder='Leave Reason' type="textarea")
       input.md-button(type='submit', value='Submit')
 
-    ul
-      li(dir-paginate='leaveRequest in leaveRequests | itemsPerPage: perPage', total-items='leaveRequest.count',  current-page='page')
-        p 
-          {{ leaveRequest.name }} 
-          &nbsp {{leaveRequest.verified}}
-          button(ng-click='remove(leaveRequest._id)') &times; 
-    dir-pagination-controls.md-accent(on-page-change='pageChanged(newPageNumber)')  
+    //- ul
+    //-   li(dir-paginate='leaveRequest in leaveRequests | itemsPerPage: perPage', total-items='leaveRequest.count',  current-page='page')
+    //-     p 
+    //-       {{ leaveRequest.name }} 
+    //-       &nbsp {{leaveRequest.verified}}
+    //-       button(ng-click='remove(leaveRequest._id)') &times; 
+    //- dir-pagination-controls.md-accent(on-page-change='pageChanged(newPageNumber)')  
     
 
-    p Total number of leaveRequests: {{leaveRequestsCount.count}}
+    //- p Total number of leaveRequests: {{leaveRequestsCount.count}}
     
   span(flex='')

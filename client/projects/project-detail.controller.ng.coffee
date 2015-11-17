@@ -55,6 +55,7 @@ angular.module 'etimesheetApp'
     document.getElementById("form").reset()
     $scope.member=[]
     $scope.idx=0 
+    $state.go('projects-list')
   
 
   $scope.remove = (projectId) ->

@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module 'etimesheetApp'
-.controller 'leaveCtrl', ($scope, $meteor) ->
+.controller 'leaveCtrl', ($scope, $meteor,$mdToast) ->
   #$scope.myDate= new Date()
   $scope.page = 1
   $scope.perPage = 3  
@@ -32,7 +32,7 @@ angular.module 'etimesheetApp'
     $scope.newLeaveRequest.deleted=0
     $scope.leaveRequests.save $scope.newLeaveRequest
     $scope.newLeaveRequest = undefined
-        
+    $mdToast.show($mdToast.simple().content('Leave Request sent'))    
   $scope.remove = (leaveRequestid) ->
     Meteor.call('leaveDelbyuser', leaveRequestid)
     console.log("comes to controller")

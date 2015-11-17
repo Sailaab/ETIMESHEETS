@@ -19,11 +19,29 @@
         md-option(value='1') Ascending
         md-option(value='-1') Descending
 
-    ul
-      li(dir-paginate='department in departments | itemsPerPage: perPage', total-items='departmentsCount.count',  current-page='page')
-        p 
-          a(href='/department/{{department._id}}') {{ department.name }}
-          
-          button(ng-click='remove(department._id)') &times;
+    table
+      tr
+        th S.N
+        th
+          a(href='#', ng-click="sortType = 'name'; sortReverse = !sortReverse") Name
+        th
+          a(href='#', ng-click="sortType = 'address'; sortReverse = !sortReverse") Description
+      tr(dir-paginate='department in departments | itemsPerPage: perPage |  orderBy:sortType:sortReverse', total-items='departmentsCount.count',  current-page='page')
+        td {{$index + 1}}
+        td {{department.name}}
+        td {{department.description}}
+        td
+           a(href='/department/{{department._id}}')  Edit 
+           button(ng-click='remove(department._id)') Remove  
     dir-pagination-controls.md-accent(on-page-change='pageChanged(newPageNumber)')
+
+    p Total number of departments: {{departmentsCount.count}}                 
+
+    //- ul
+    //-   li(dir-paginate='department in departments | itemsPerPage: perPage', total-items='departmentsCount.count',  current-page='page')
+    //-     p 
+    //-       a(href='/department/{{department._id}}') {{ department.name }}
+          
+    //-       button(ng-click='remove(department._id)') &times;
+    //- dir-pagination-controls.md-accent(on-page-change='pageChanged(newPageNumber)')
   span(flex='') 

@@ -9,7 +9,7 @@
         th Added By
         th Created Date
 
-      tr(ng-repeat='dailyLog in dailyLogs')
+      tr(dir-paginate='dailyLog in dailyLogs | itemsPerPage: perPage |  orderBy:sortType:sortReverse', total-items='dailyLogsCount.count',  current-page='page')
         td {{dailyLog.pname}}
         td {{dailyLog.Timetaken+'hrs'}}
         td {{dailyLog.description}}
@@ -17,5 +17,7 @@
         td{{dailyLog.createdDate}}
         td 
           button(ng-click='deltimesheet(dailyLog._id)') Delete
-  span(flex='')
+    dir-pagination-controls.md-accent(on-page-change='pageChanged(newPageNumber)')
 
+    p Total number of organization: {{dailyLogsCount.count}}          
+  span(flex='')
