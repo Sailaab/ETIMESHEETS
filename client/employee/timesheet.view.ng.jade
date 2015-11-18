@@ -38,7 +38,7 @@
           tr(ng-repeat="time in Times")
             td
               md-select(ng-model='time.pname', placeholder='Project Title')
-                md-option(ng-value='project._id', ng-repeat='project in projects',ng-click="set(project.name)") {{ project.name }}
+                md-option(ng-value='project.name', ng-repeat='project in projects',ng-click="set(project.name)") {{ project.name }}
              
             td
               md-input-container
