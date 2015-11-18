@@ -30,6 +30,18 @@
         md-input-container
           md-icon(md-svg-icon='content:ic_mail_24px')
           input(type='email', ng-model='secondaryemail', placeholder='Secondary Email', aria-label='secondaryemail') 
+      label Department
+        md-select(ng-model='department', placeholder='Select Department') 
+         md-option(ng-value='' )
+         md-option(ng-value='department._id', ng-repeat='department in departments') {{ department.name }}
+         br
+      br
+      label Designation
+        md-select(ng-model='designation', placeholder='Select Designation') 
+         md-option(ng-value='' )
+         md-option(ng-value='designation._id', ng-repeat='designation in designations') {{designation.name }}
+         br
+      br                
       div(layout='row')
         input.md-button(type='submit', value='Save' ng-click='save()')
         md-button(ng-href='/manageemployee') Cancel

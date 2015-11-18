@@ -2,6 +2,11 @@
 
 angular.module 'etimesheetApp'
 .controller 'ManageEmployeeCtrl', ($scope, $meteor) ->
+  $scope.page = 1
+  $scope.perPage = 3
+  $scope.sort = {name : 1}
+  $scope.orderProperty = '1'
+    
   $scope.viewName = 'ManageEmployee'
 
   $scope.users = $scope.$meteorCollection ()->

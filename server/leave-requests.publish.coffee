@@ -12,8 +12,9 @@ Meteor.publish 'leaveRequests', (options,od, searchString) ->
 
 Meteor.publish 'leaveRequestsadmin', (options, searchString) ->
   where =
-    '_id':
+    'name':
       '$regex': '.*' + (searchString or '') + '.*'
       '$options': 'i'
+    'verified': "Not-Approved"
   Counts.publish this, 'numberOfLeaveRequests', LeaveRequests.find({verified:"Not-Approved"}), noReady: true
   LeaveRequests.find where, options   

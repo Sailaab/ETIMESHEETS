@@ -10,6 +10,9 @@
       md-input-container
         label Description
         input(ng-model='newOrganization.description', placeholder='description')
+      md-input-container
+        label Description
+        input(ng-model='newOrganization.address', placeholder='Address')    
       input.md-button(type='submit', value='Add')
     div(layout='row', layout-padding='')
       md-input-container(flex='65')
@@ -25,16 +28,10 @@
           a(href='#', ng-click="sortType = 'name'; sortReverse = !sortReverse") Name
         th
           a(href='#', ng-click="sortType = 'address'; sortReverse = !sortReverse") Address
-        th
-          a(href='#', ng-click="sortType = 'contact'; sortReverse = !sortReverse") Contact
-        th
-          a(href='#', ng-click="sortType = 'email'; sortReverse = !sortReverse") Email
       tr(dir-paginate='organization in organizations | itemsPerPage: perPage |  orderBy:sortType:sortReverse', total-items='organizationsCount.count',  current-page='page')
         td {{$index + 1}}
         td {{organization.name}}
         td {{organization.address}}
-        td {{organization.contact}}
-        td {{organization.email}} 
         td
           a(href='/organization/{{organization._id}}')  Edit 
           button(ng-click='remove(organization._id)') Remove

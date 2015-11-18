@@ -8,7 +8,7 @@ angular.module 'etimesheetApp'
   $scope.orderProperty = '1'
   
   $scope.designations = $scope.$meteorCollection () ->
-    Designations.find {'deleted':'0'}, {sort:$scope.getReactively('sort')}
+    Designations.find {'deleted':0}, {sort:$scope.getReactively('sort')}
   $meteor.autorun $scope, () ->
     $scope.$meteorSubscribe('designations', {
       limit: parseInt($scope.getReactively('perPage'))
@@ -21,8 +21,8 @@ angular.module 'etimesheetApp'
   .bind $scope, 'page'
     
   $scope.save = () ->
-    $scope.newDesignation.deleted='0'
-    $scope.newDesignation.isActive='1'
+    $scope.newDesignation.deleted=0
+    $scope.newDesignation.isActive=1
     $scope.designations.save $scope.newDesignation
     $scope.newDesignation = undefined
       

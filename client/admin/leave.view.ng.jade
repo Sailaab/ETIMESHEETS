@@ -8,7 +8,7 @@
         th Employee
         th Asked Date
         th Approved
-      tr(dir-paginate='leaveRequest in leaveRequests | itemsPerPage: perPage', total-items='leaveRequestsCount.count',  current-page='page')
+      tr(dir-paginate='leaveRequest in leaveRequests | itemsPerPage: perPage |  orderBy:sortType:sortReverse', total-items='leaveRequestsCount.count',  current-page='page')
         td {{leaveRequest.startDate}}
         td {{leaveRequest.endDate}}
         td {{leaveRequest.name}}
@@ -20,5 +20,5 @@
           button(ng-click='cancelleave(leaveRequest._id)') Cancel it   
 
     dir-pagination-controls.md-accent(on-page-change='pageChanged(newPageNumber)')
-    p Total number of leave: {{leaveRequestsCount.count}}
 
+    p Total number of leave: {{leaveRequestsCount.count}}

@@ -5,13 +5,10 @@ angular.module 'etimesheetApp'
   $scope.page = 1
   $scope.perPage = 10
   $scope.pname=""
-  $scope.sort = name : 1
+  $scope.sort = {name : 1}
   $scope.orderProperty = '1'
+ 
   $scope.Times=[]
-  
-  
-  
-  
   $scope.dailyLogs = $scope.$meteorCollection () ->
     DailyLogs.find {}, {sort:$scope.getReactively('sort')}
   $scope.projects = $scope.$meteorCollection () ->
@@ -36,7 +33,8 @@ angular.module 'etimesheetApp'
     console.log($scope.pname)
   $scope.addRow=()->
     $scope.Times.push({pname:$scope.newDailyLog.name,Timetaken:$scope.newDailyLog.Timetaken,description:$scope.newDailyLog.Description,deleted:0,done:false,user:$rootScope.currentUser.emails[0].address,createdDate:new Date()})
-    $scope.newDailyLog = undefined
+    $scope.newDailyLog =""
+    console.log($scope.pname)
 
   $scope.save = () ->
     $scope.newDailyLog=$scope.Times

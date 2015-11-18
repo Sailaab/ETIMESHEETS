@@ -12,13 +12,14 @@ angular.module 'etimesheetApp'
     Projects.find {}, {sort:$scope.getReactively('sort')}
   $meteor.autorun $scope, () ->
     $scope.$meteorSubscribe('dailyLogs', {
+      limit: parseInt($scope.getReactively('perPage'))
       skip: parseInt(($scope.getReactively('page') - 1) * $scope.getReactively('perPage'))
       sort: $scope.getReactively('sort')
     }, $scope.getReactively('search')).then () ->
       $scope.dailyLogsCount = $scope.$meteorObject Counts, 'numberOfDailyLogs', false
     $scope.$meteorSubscribe('projects')
 
-  $meteor.session 'organizationsCounter'
+  $meteor.session 'dailyLogsCounter'
   .bind $scope, 'page'    
 
   $scope.deltimesheet=(dailylogid)->
@@ -27,4 +28,3 @@ angular.module 'etimesheetApp'
   $scope.$watch 'orderProperty', () ->
     if $scope.orderProperty
       $scope.sort = {name: parseInt($scope.orderProperty)}
-    

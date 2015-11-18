@@ -4,13 +4,14 @@ angular.module 'etimesheetApp'
 .controller 'DepartmentListCtrl', ($scope, $meteor) ->
   $scope.page = 1
   $scope.perPage = 5
-  $scope.sort = name_sort : 1
+  $scope.sort = {name : 1}
   $scope.orderProperty = '1'
   
   $scope.departments = $scope.$meteorCollection () ->
-    Departments.find {'deleted':'0'}, {sort:$scope.getReactively('sort')}
+    Departments.find {'deleted':0}, {sort:$scope.getReactively('sort')}
   $meteor.autorun $scope, () ->
     $scope.$meteorSubscribe('departments', {
+      limit: parseInt($scope.getReactively('perPage'))
       skip: parseInt(($scope.getReactively('page') - 1) * $scope.getReactively('perPage'))
       sort: $scope.getReactively('sort')
     }, $scope.getReactively('search')).then () ->
@@ -20,8 +21,8 @@ angular.module 'etimesheetApp'
   .bind $scope, 'page'
     
   $scope.save = () -> 
-    $scope.newDepartment.deleted="0"
-    $scope.newDepartment.isActive="1"
+    $scope.newDepartment.deleted=0
+    $scope.newDepartment.isActive=1
     $scope.departments.save $scope.newDepartment
     console.log("new dep"+$scope.newDepartment)
     $scope.newDepartment = undefined

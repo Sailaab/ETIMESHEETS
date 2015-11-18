@@ -36,7 +36,7 @@ Meteor.methods
   sailaabDelete:(sailaabId) ->
     Sailaabs.update(sailaabId,{$set:{'deleted':1}})
 
-  update:(user,email, address, fname, mname, lname, contact, secondaryemail) ->
+  update:(user,email, address, fname, mname, lname, contact, secondaryemail,department,designation) ->
     Meteor.users.update({ _id: user },{$set:{"emails.0.address":email}})
     Meteor.users.update({ _id: user },{$set:{"profile.0.fname":fname}})
     Meteor.users.update({ _id: user },{$set:{"profile.0.mname":mname}})
@@ -44,3 +44,5 @@ Meteor.methods
     Meteor.users.update({ _id: user },{$set:{"profile.0.address":address}})
     Meteor.users.update({ _id: user },{$set:{"profile.0.contact":contact}})
     Meteor.users.update({ _id: user },{$set:{"profile.0.secondaryemail":secondaryemail}}) 
+    Meteor.users.update({ _id: user },{$set:{"profile.0.department":department}})
+    Meteor.users.update({ _id: user },{$set:{"profile.0.designation":designation}})

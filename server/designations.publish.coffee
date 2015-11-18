@@ -5,5 +5,6 @@ Meteor.publish 'designations', (options, searchString) ->
     'name':
       '$regex': '.*' + (searchString or '') + '.*'
       '$options': 'i'
-  Counts.publish this, 'numberOfDesignations', Designations.find(where), noReady: true
+    'deleted':0  
+  Counts.publish this, 'numberOfDesignations', Designations.find({deleted:0}), noReady: true
   Designations.find where, options
