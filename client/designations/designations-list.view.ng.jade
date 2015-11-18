@@ -10,6 +10,15 @@
       Label Description
       textarea(ng-model='newDesignation.description',placeholder='Description')
       input.md-button(type='submit', value='Add')
+        
+    div(layout='row', layout-padding='')
+      md-input-container(flex='65')
+        label Search
+        input(type='search', ng-model='search', placeholder='Search')
+      md-select(ng-model='orderProperty', flex='35')
+        md-option(value='1') Ascending
+        md-option(value='-1') Descending
+
     
     //- ul
     //-   li(dir-paginate='designation in designations | itemsPerPage: perPage', total-items='designationsCount.count',  current-page='page')

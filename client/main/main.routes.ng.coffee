@@ -110,7 +110,7 @@ angular.module 'etimesheetApp'
     resolve:
       currentUser: ['$meteor', ($meteor) ->
         $meteor.requireValidUser((user)->
-          if(user._id=="BhwRmjwMgsr7FtSSX") 
+          if(user.profile[0].role=="admin") 
              return true;
            return 'UNAUTHORIZED'
          )

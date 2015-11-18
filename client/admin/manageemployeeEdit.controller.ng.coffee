@@ -5,7 +5,7 @@ angular.module('etimesheetApp')
     Meteor.users.find {'_id':$stateParams.userId}
 
   $scope.departments = $scope.$meteorCollection () ->
-    Departments.find {'deleted':'0'}, {sort:$scope.getReactively('sort')}
+    Departments.find {'deleted':0}, {sort:$scope.getReactively('sort')}
   $meteor.autorun $scope, () ->
     $scope.$meteorSubscribe('departments', {
       skip: parseInt(($scope.getReactively('page') - 1) * $scope.getReactively('perPage'))
@@ -13,9 +13,10 @@ angular.module('etimesheetApp')
       sort: $scope.getReactively('sort')
     }, $scope.getReactively('search')).then () ->
       $scope.departmentsCount = $scope.$meteorObject Counts, 'numberOfDepartments', false
+  console.log($scope.departments+"this is dept")    
 
   $scope.designations = $scope.$meteorCollection () ->
-    Designations.find {'deleted':'0'}, {sort:$scope.getReactively('sort')}
+    Designations.find {'deleted':0}, {sort:$scope.getReactively('sort')}
   $meteor.autorun $scope, () ->
     $scope.$meteorSubscribe('designations', {
       limit: parseInt($scope.getReactively('perPage'))

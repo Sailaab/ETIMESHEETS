@@ -17,6 +17,15 @@
         td{{dailyLog.createdDate}}
         td 
           button(ng-click='deltimesheet(dailyLog._id)') Delete
+          
+    div(layout='row', layout-padding='')
+      md-input-container(flex='65')
+        label Search
+        input(type='search', ng-model='search', placeholder='Search')
+      md-select(ng-model='orderProperty', flex='35')
+        md-option(value='1') Ascending
+        md-option(value='-1') Descending
+
     dir-pagination-controls.md-accent(on-page-change='pageChanged(newPageNumber)')
 
     p Total number of dailyLogs: {{dailyLogsCount.count}}          

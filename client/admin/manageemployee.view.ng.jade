@@ -3,6 +3,10 @@
       span(flex='')
       div(layout='column')
         h1 Users Management
+        div(layout='row', layout-padding='')
+              md-input-container(flex='65')
+                label Search
+                input(type='search', ng-model='search', placeholder='Search')        
         table
           tr
             th S.N
@@ -22,6 +26,9 @@
               a(href='/manageemployeeEdit/{{user._id}}')  Edit &nbsp
               a(href='/reset/{{user._id}}') Reset
               button(ng-click='remove(user._id)') Remove
+        dir-pagination-controls.md-accent(on-page-change='pageChanged(newPageNumber)')
+
+        p Total number of users: {{usersCount.count}}                   
       span(flex='')
 
      

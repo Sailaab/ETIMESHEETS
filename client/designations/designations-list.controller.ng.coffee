@@ -4,7 +4,7 @@ angular.module 'etimesheetApp'
 .controller 'DesignationsListCtrl', ($scope, $meteor) ->
   $scope.page = 1
   $scope.perPage = 5
-  $scope.sort = name_sort : 1
+  $scope.sort = {name : 1}
   $scope.orderProperty = '1'
   
   $scope.designations = $scope.$meteorCollection () ->
