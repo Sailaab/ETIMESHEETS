@@ -2,11 +2,12 @@
 
 Meteor.publish 'leaveRequests', (options,od, searchString) ->
   where =
-    '_id':
+    'name':
       '$regex': '.*' + (searchString or '') + '.*'
       '$options': 'i'
     'owner':od.owner
-  Counts.publish this, 'numberOfLeaveRequests', LeaveRequests.find({deleted:0}), noReady: true
+    'deleted':0
+  Counts.publish this, 'numberOfLeaveRequests', LeaveRequests.find({deleted:0,'owner':od.owner}), noReady: true
   LeaveRequests.find where, options 
 
 

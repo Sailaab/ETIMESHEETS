@@ -15,15 +15,28 @@
         input(ng-model='newLeaveRequest.reason', placeholder='Leave Reason' type="textarea")
       input.md-button(type='submit', value='Submit')
 
+    table
+      tr
+        th S.N
+        th
+          a(href='#', ng-click="sortType = 'name'; sortReverse = !sortReverse") Name
+        th
+          a(href='#', ng-click="sortType = 'address'; sortReverse = !sortReverse") Verfied
+      tr(dir-paginate='leaveRequest in leaveRequests | itemsPerPage: perPage |  orderBy:sortType:sortReverse', total-items='leaveRequestsCount.count',  current-page='page')
+        td {{$index + 1}}
+        td {{leaveRequest.name}}
+        td {{leaveRequest.verified}}
+        td
+          button(ng-click='remove(leaveRequest._id)') Remove
     //- ul
     //-   li(dir-paginate='leaveRequest in leaveRequests | itemsPerPage: perPage', total-items='leaveRequest.count',  current-page='page')
     //-     p 
     //-       {{ leaveRequest.name }} 
     //-       &nbsp {{leaveRequest.verified}}
     //-       button(ng-click='remove(leaveRequest._id)') &times; 
-    //- dir-pagination-controls.md-accent(on-page-change='pageChanged(newPageNumber)')  
+    dir-pagination-controls.md-accent(on-page-change='pageChanged(newPageNumber)')  
     
 
-    //- p Total number of leaveRequests: {{leaveRequestsCount.count}}
+    p Total number of leaveRequests: {{leaveRequestsCount.count}}
     
   span(flex='')
