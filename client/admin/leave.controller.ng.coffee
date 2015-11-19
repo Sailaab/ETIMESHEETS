@@ -2,7 +2,7 @@
 angular.module 'etimesheetApp'
 .controller 'LeaveControl', ($scope, $meteor) ->  
   $scope.page = 1
-  $scope.perPage = 10
+  $scope.perPage = 3
   $scope.sort = {name : 1}
   $scope.orderProperty = '1'
   

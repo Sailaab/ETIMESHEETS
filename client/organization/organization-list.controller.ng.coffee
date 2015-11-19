@@ -17,7 +17,7 @@ angular.module 'etimesheetApp'
     }, $scope.getReactively('search')).then () ->
       $scope.organizationsCount = $scope.$meteorObject Counts, 'numberOfOrganizations', false
 
-  $meteor.session 'organizationsCounter'
+  $meteor.session 'organizationsCounter'  
   .bind $scope, 'page'
   
 

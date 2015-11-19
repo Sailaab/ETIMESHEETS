@@ -24,7 +24,7 @@
         li(ng-repeat='user in users', style="list-style-type: none;")
           input(type='checkbox', checklist-model='mem', checklist-value='user._id', ng-disabled="shouldBeDisabled(user.profile.deleted)", ng-click="toggle(user._id, member)", ng-checked="exists(user._id, member)" )
           {{user.profile[0].fname}} {{user.emails[0].address}}
-      label Parent
+      label parent
         md-select(ng-model='newProject.parent', placeholder='Select Parent Project if any') 
          md-option(ng-value='' )
          md-option(ng-value='project._id', ng-repeat='project in projects') {{ project.name }}
@@ -47,7 +47,7 @@
         th
           a(href='#', ng-click="sortType = 'name'; sortReverse = !sortReverse") Name
         th
-          a(href='#', ng-click="sortType = 'startDate'; sortReverse = !sortReverse") Address
+          a(href='#', ng-click="sortType = 'startDate'; sortReverse = !sortReverse") Start Date
       tr(dir-paginate='project in projects | itemsPerPage: perPage |  orderBy:sortType:sortReverse', total-items='projectsCount.count',  current-page='page')
         td {{$index + 1}}
         td {{project.name}}
