@@ -1,9 +1,5 @@
-angular.module('etimesheetApp').controller 'RegisterCtrl', [
-  '$scope'
-  '$meteor'
-  '$state'
-
-  ( $scope,$meteor, $state) ->
+angular.module('etimesheetApp').controller 'RegisterCtrl', 
+  ( $scope,$meteor, $state, $mdToast) ->
    
    
     $scope.email= ''
@@ -41,5 +37,5 @@ angular.module('etimesheetApp').controller 'RegisterCtrl', [
           )
       else
         console.log("not match")  
-        alert("pasword doesnt match")
-   ]
+        $mdToast.show($mdToast.simple().content('Password doesnt match'))
+   
