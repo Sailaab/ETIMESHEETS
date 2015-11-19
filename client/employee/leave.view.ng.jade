@@ -15,6 +15,15 @@
         input(ng-model='newLeaveRequest.reason', placeholder='Leave Reason' type="textarea")
       input.md-button(type='submit', value='Submit')
 
+    div(layout='row', layout-padding='')
+      md-input-container(flex='65')
+        label Search
+        input(type='search', ng-model='search', placeholder='Search')
+      md-select(ng-model='orderProperty', flex='35')
+        md-option(value='1') Ascending
+        md-option(value='-1') Descending
+        
+
     table
       tr
         th S.N

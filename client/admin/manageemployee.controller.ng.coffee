@@ -29,3 +29,8 @@ angular.module 'etimesheetApp'
 
   $scope.remove = (user) ->
     Meteor.call('remove', user)
+
+
+  $scope.$watch 'orderProperty', () ->
+    if $scope.orderProperty
+      $scope.sort = {'profile.fname': parseInt($scope.orderProperty)}    

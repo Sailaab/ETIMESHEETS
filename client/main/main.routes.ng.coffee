@@ -139,19 +139,3 @@ angular.module 'etimesheetApp'
            return $state.go 'employee'
          )
       ]    
-
-
-  # .state 'dashboard',
-  #   url: '/dashboard'
-  #   resolve: ['$meteor', '$state'
-  #    ($meteor, $state) ->
-  #     console.log ($meteor.user._id+ 'hello')
-  #     console.log(Meteor.userId())
-  #     if(Meteor.userId()=="BhwRmjwMgsr7FtSSX")
-  #       # $state.go 'admin'
-  #       console.log("goes to admin")
-  #     else
-  #       $state.go 'employee'
-  #       console.log("goes to employee")
-  #      return     
-  #    ]  

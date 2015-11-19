@@ -42,4 +42,4 @@ angular.module 'etimesheetApp'
     
   $scope.$watch 'orderProperty', () ->
     if $scope.orderProperty
-      $scope.sort = name_sort: parseInt($scope.orderProperty)
+      $scope.sort = {name: parseInt($scope.orderProperty)}

@@ -4,9 +4,13 @@
       div(layout='column')
         h1 Users Management
         div(layout='row', layout-padding='')
-              md-input-container(flex='65')
-                label Search
-                input(type='search', ng-model='search', placeholder='Search')        
+          md-input-container(flex='65')
+            label Search
+            input(type='search', ng-model='search', placeholder='Search')
+          md-select(ng-model='orderProperty', flex='35')
+            md-option(value='1') Ascending
+            md-option(value='-1') Descending
+        
         table
           tr
             th S.N
