@@ -139,3 +139,14 @@ angular.module 'etimesheetApp'
            return $state.go 'employee'
          )
       ]    
+
+  .state 'verify',
+    url: '/verify-email/:verifyEmailToken'
+    template: 'your mail is verified'
+    controller:($stateParams, $meteor)->
+      console.log($stateParams)
+      console.log($stateParams.verifyEmailToken)
+      Meteor.call('verifyEmail',$stateParams.verifyEmailToken)
+  
+
+    
