@@ -147,6 +147,16 @@ angular.module 'etimesheetApp'
       console.log($stateParams)
       console.log($stateParams.verifyEmailToken)
       Meteor.call('verifyEmail',$stateParams.verifyEmailToken)
+
+  .state 'resetpass',
+    url: '/reset-password/:resetToken'
+    templateUrl: 'client/reset/resetcustom.view.html'
+    controller: 'resetcustomCtrl'
+    # controller:($stateParams, $meteor, $state)->
+    #   console.log($stateParams)
+    #   console.log($stateParams.resetToken)
+    #   Meteor.call('resetPassword',$stateParams.resetToken,password)
+
   
 
     

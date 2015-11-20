@@ -7,7 +7,8 @@ angular.module('etimesheetApp').controller 'ResetCtrl',($scope, $meteor, $state)
     # console.log($scope.credentials.email)
     $scope.resetpsw = () ->
       console.log($scope.email)
-      Accounts.forgotPassword({'email':$scope.email}, (error)->
+
+      Accounts.forgotPassword({email:$scope.email}, (error)->
         if(error)
           console.log("this is erreorrrr")
           console.log(error+"this is error")

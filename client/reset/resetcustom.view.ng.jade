@@ -1,0 +1,10 @@
+md-content(layout='row')
+      span(flex='')
+      md-whiteframe(layout='column', flex='50')
+        form(layout='column')
+          md-input-container
+            md-icon(md-svg-icon='content:ic_mail_24px')
+            input(type='text', ng-model='password', placeholder='new password', aria-label='email')
+          md-button.md-raised.md-primary(ng-click='resetpsw()', aria-label='resetpsw')
+            | Reset password
+      span(flex='')
