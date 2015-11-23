@@ -156,7 +156,3 @@ angular.module 'etimesheetApp'
     #   console.log($stateParams)
     #   console.log($stateParams.resetToken)
     #   Meteor.call('resetPassword',$stateParams.resetToken,password)
-
-  
-
-    
