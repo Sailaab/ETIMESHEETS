@@ -27,7 +27,7 @@ angular.module('etimesheetApp').controller 'MainCtrl', ['$scope', '$meteor', '$s
         $state.go 'admin'
 
       else 
-        if($scope.currentUser.emails[0].verified==true && $scope.currentUser.profile[0].deleted==0)
+        if($scope.currentUser.emails[0].verified==true && $scope.currentUser.profile[0].deleted==0 && $scope.currentUser.profile[0].adminverify==1 && $scope.currentUser.profile[0].isActive==1)
           $state.go 'employee'  
           console.log("comesh here")
         else

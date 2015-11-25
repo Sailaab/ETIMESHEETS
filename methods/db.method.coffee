@@ -21,6 +21,22 @@ Meteor.methods
     Meteor.users.update({ _id: user },{$set:{"profile.0.deleted":1}})
     console.log("comes here to the method")
 
+  deactivate: (user) ->
+    Meteor.users.update({ _id: user },{$set:{"profile.0.isActive":0}})
+    console.log(user+"comes here to the method for deactivate")   
+
+  activate: (user) ->
+    Meteor.users.update({ _id: user },{$set:{"profile.0.isActive":1}})
+    console.log(user+"comes here to the method for activate")    
+
+  adminverify: (user) ->
+    Meteor.users.update({ _id: user },{$set:{"profile.0.adminverify":1}})
+    console.log("comes here to the method for adminverify") 
+
+  verifyemail: (user) ->
+    Meteor.users.update({ _id: user },{$set:{"emails.0.verified":true}})
+    console.log("comes here to the method for email verify")     
+
   projectDelete:(project) ->
     Projects.update(project,{$set:{'deleted':1}})
 
@@ -46,3 +62,8 @@ Meteor.methods
     Meteor.users.update({ _id: user },{$set:{"profile.0.secondaryemail":secondaryemail}}) 
     Meteor.users.update({ _id: user },{$set:{"profile.0.department":department}})
     Meteor.users.update({ _id: user },{$set:{"profile.0.designation":designation}})
+
+  createUserr:(uemail,upassword,uprofile) ->
+    console.log("goes to server")  
+    console.log(uemail,upassword,uprofile)
+    Accounts.createUser(email:uemail, password:upassword, profile:uprofile)

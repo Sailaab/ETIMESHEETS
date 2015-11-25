@@ -50,5 +50,22 @@ Meteor.startup ->
         stopActivationLink:true
           })
 
+    Accounts.createUser({
+        email: 'ghostrider@yahoo.com'
+        password: '1234'
+        profile : [
+                {
+                        "fname" : "abcd",
+                        "mname" : "",
+                        "lname" : "efg",
+                        "contact" : "98489999999",
+                        "address" : "satdobatto",
+                        "deleted" : 0,
+                        "secondaryemail" : "abc@email.com"
+                }
+        ]
+        stopActivationLink:true
+          })    
+
     ###users.forEach (user) ->
       Meteor.users.insert user###

@@ -1,8 +1,9 @@
 md-toolbar.toolbar(layout='row', layout-align='start center', layout-padding='')
   .navbar-left(layout='row', layout-align='center center')
     a(href='/dashboard')
-      i(class='fa fa-home fa-3x' color= white)
+      i(class='fa fa-home fa-3x' style="color:white")
   span(flex='')
   .navbar-right(layout='row', layout-align='center center') 
-    div(ng-show='$root.currentUser ') {{ $root.currentUser.emails[0].address }}
-    md-button(ng-href='/logout', ng-show='$root.currentUser') Logout
+    div(ng-show='$root.currentUser ') {{ $root.currentUser.profile[0].fname }}
+    md-button(ng-href='/logout', ng-show='$root.currentUser') 
+      i(class="fa fa-sign-out fa-3x")

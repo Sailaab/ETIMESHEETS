@@ -25,11 +25,23 @@ angular.module 'etimesheetApp'
       
   # $meteor.autorun $scope, () ->
   #   $meteor.subscribe('users')
-    
+
+  $scope.detail = (user) ->
+    if user.profile[0].isActive
+      console.log('isActive')
+      Meteor.call('deactivate', user._id)       
+    else
+      console.log('notActive')
+      Meteor.call('activate', user._id)             
 
   $scope.remove = (user) ->
     Meteor.call('remove', user)
 
+  $scope.adminverify = (user) ->
+    Meteor.call('adminverify', user)
+
+  $scope.verifyemail= (user)->
+    Meteor.call('verifyemail',user)  
 
   $scope.$watch 'orderProperty', () ->
     if $scope.orderProperty

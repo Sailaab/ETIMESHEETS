@@ -3,5 +3,5 @@
 angular.module 'etimesheetApp'
 .config ($mdThemingProvider) ->
   $mdThemingProvider.theme('default')
-  .primaryPalette('deep-orange')
+  .primaryPalette('blue')
   .accentPalette('lime')

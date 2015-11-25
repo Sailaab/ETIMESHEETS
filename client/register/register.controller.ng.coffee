@@ -12,6 +12,7 @@ angular.module('etimesheetApp').controller 'RegisterCtrl',
       contact:'',
       address:'',   
       deleted: 0 ,
+      isActive: 1,
     ]
     
     $scope.user = $scope.$meteorCollection () ->
@@ -21,20 +22,8 @@ angular.module('etimesheetApp').controller 'RegisterCtrl',
     $scope.register = () ->
       if($scope.password==$scope.repassword)
         console.log("correct")
-        Accounts.createUser({email:$scope.email, password:$scope.password, profile:$scope.profile}, (error)->
-            if(error)
-              console.log(error)
-            else
-              console.log('success')
-              $scope.verificationState = $scope.user[0].emails[0].verified
-              console.log('verified state')
-              $scope.emailToVerify = $scope.user[0].emails[0].address
-              if($scope.verificationState==false)
-                Meteor.call('chkEmailVerify',Meteor.userId(),$scope.emailToVerify)
-                $state.go('not-verified',{userId: Meteor.userId()})
-              else
-                $state.go('main')
-          )
+        console.log("from controller"+$scope.email,$scope.password,$scope.profile)
+        Meteor.call('createUserr',$scope.email, $scope.password, $scope.profile)
       else
         console.log("not match")  
         $mdToast.show($mdToast.simple().content('Password doesnt match'))

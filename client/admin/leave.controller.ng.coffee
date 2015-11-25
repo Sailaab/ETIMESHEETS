@@ -15,7 +15,7 @@ angular.module 'etimesheetApp'
       sort: $scope.getReactively('sort')
     }, $scope.getReactively('search')).then () ->
       $scope.leaveRequestsCount = $scope.$meteorObject Counts, 'numberOfLeaveRequests', false
-
+ 
   $meteor.session 'leaveRequestsCounter'
   .bind $scope, 'page'      
 

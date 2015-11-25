@@ -6,3 +6,5 @@ Accounts.onCreateUser (options, user) ->
     user.emails[0].verified=true   
   user.profile=options.profile
   return user
+
+  
