@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('etimesheetApp').controller 'MainCtrl', ['$scope', '$meteor', '$state', ($scope, $meteor, $state) ->
+angular.module('etimesheetApp').controller 'MainCtrl',( $scope,$meteor, $state, $mdToast)  ->
   
   
 
@@ -9,9 +9,8 @@ angular.module('etimesheetApp').controller 'MainCtrl', ['$scope', '$meteor', '$s
     password: ''
   $scope.error = ''
 
-
-  $scope.user = $scope.$meteorCollection ()->
-    Meteor.users.find {"profile.deleted":0}, {sort:$scope.getReactively('sort')}
+  $scope.user = $scope.$meteorCollection () ->
+    Meteor.users.find {}
       
   $meteor.autorun $scope, () ->
     $meteor.subscribe('users')
@@ -35,5 +34,25 @@ angular.module('etimesheetApp').controller 'MainCtrl', ['$scope', '$meteor', '$s
           console.log("goes here")
     ), (err) ->
       $scope.error = 'Login error - ' + err
-]
             
+  
+   
+  $scope.email= ''
+  $scope.password=''
+  $scope.error = ''
+  $scope.profile=[
+    fname:'',
+    mname:'',
+    lname:'',
+    contact:'',
+    address:'',   
+    deleted: 0 ,
+    isActive: 1,
+  ]
+
+  $scope.register = () ->
+    if($scope.password==$scope.repassword)
+      Meteor.call('createUserr',$scope.email, $scope.password, $scope.profile)
+    else
+      console.log("not match")  
+      $mdToast.show($mdToast.simple().content('Password doesnt match'))

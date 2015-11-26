@@ -66,4 +66,6 @@ Meteor.methods
   createUserr:(uemail,upassword,uprofile) ->
     console.log("goes to server")  
     console.log(uemail,upassword,uprofile)
-    Accounts.createUser(email:uemail, password:upassword, profile:uprofile)
+    userId = Accounts.createUser(email:uemail, password:upassword, profile:uprofile)
+    Accounts.sendVerificationEmail(userId,uemail)
+    console.log('success')
