@@ -68,5 +68,5 @@ angular.module 'etimesheetApp'
     if $scope.orderProperty
       $scope.sort = name_sort: parseInt($scope.orderProperty)
 
-  $scope.update=(project)->
-    $scope.projects.update project    
+  # $scope.update=(project)->
+  #   $scope.projects.update project    

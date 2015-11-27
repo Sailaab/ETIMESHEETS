@@ -1,18 +1,30 @@
+md-content(layout='')
+  toolbar(style='position:fixed')
 md-content(layout='row')
-      span(flex='')
-      md-whiteframe(layout='column', flex='50')
-        div(layout='row', layout-align='space-around center')
-          div Login with:
-          md-button Twitter
-          md-button Facebook
-        .md-warn(ng-show='rpc.error')
-          small {{ rpc.error }}
-        form(layout='column')
-          md-input-container
-            md-icon(md-svg-icon='content:ic_mail_24px')
-            input(type='password', ng-model='newPlaintextPassword', placeholder='password', aria-label='password')
-          md-button.md-raised.md-primary(ng-click='resetpsw()', aria-label='login')
-            | Reset password
-        div(layout='row', layout-align='end center')
-          a(href='/login') Login
-      span(flex='')
+  div.sidebar(layout='column',  flex='stretch')
+    h3 User Management        
+    a(href='/manageemployee') Manage Employee
+    a(href="/manageorganization") Manage organizations
+    a(href='/viewleave') See Leave
+    a(href='/viewtimesheet') See Daily Logs
+    h3 List Datas Management  
+    a(href="/managedepartment") Manage Departments
+    a(href="/managedesignation") Manage Designation
+    a(href="/projects") Manage Projects  
+  span(flex='')
+  md-whiteframe(layout='column', flex='50')
+    div(layout='row', layout-align='space-around center')
+      div Login with:
+      md-button Twitter
+      md-button Facebook
+    .md-warn(ng-show='rpc.error')
+      small {{ rpc.error }}
+    form(layout='column')
+      md-input-container
+        md-icon(md-svg-icon='content:ic_mail_24px')
+        input(type='password', ng-model='newPlaintextPassword', placeholder='password', aria-label='password')
+      md-button.md-raised.md-primary(ng-click='resetpsw()', aria-label='login')
+        | Reset password
+    div(layout='row', layout-align='end center')
+      a(href='/login') Login
+  span(flex='')

@@ -1,6 +1,8 @@
+md-content(layout='')
+  toolbar(style='position:fixed')
 .users-list(layout='row', flex='')
    
-  div(layout='row',layout-fill layout-align='start start' style='height: 100%' flex='')
+  div(layout='row',layout-fill layout-align='start start' flex='')
     div.sidebar(layout='column',  flex='stretch')
       h3 User Management        
       a(href='/manageemployee') Manage Employee
@@ -11,11 +13,13 @@
       a(href="/managedepartment") Manage Departments
       a(href="/managedesignation") Manage Designation
       a(href="/projects") Manage Projects
-    div(layout='column', layout-align='center center' flex='')
-      div(layout='column', layout-align='center center')
-        h1(layout-align='center center')  Admin Dashboard
-      div(layout='row', layout-align='center center')
-        h2(layout-align='center center')  DailyLogs
-        h2(layout-align='center center')  LeaveRequests
+       
+    div(layout='column', layout-align='center center', flex='')
+      span(flex='')
+        div(layout='column', layout-align='center center')
+          h1(layout-align='center center')  Admin Dashboard
+        div(layout='row', layout-align='center center')
+          h1(layout-align='center center')  Admin Dashboard
+      span(flex='')     
 
 

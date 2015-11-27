@@ -34,7 +34,7 @@ angular.module 'etimesheetApp'
     else
       return false
   
-  $scope.exist=(users,list)->
+  $scope.exists=(users,list)->
     return list.indexOf(users) > -1
 
   $scope.toggle =  (users, list)->

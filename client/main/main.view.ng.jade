@@ -1,4 +1,3 @@
-
 div.fbtoolbar(layout='row', layout-align='space-around center') 
   div.toolleft(flex='50')
     img(ng-src='etime.png')
@@ -10,65 +9,48 @@ div.fbtoolbar(layout='row', layout-align='space-around center')
       md-input-container
         label.toollabel(for='password') password
         input.apple(type='password', ng-model='credentials.password', name='password', placeholder='password')
-      md-button.md-raised.md-primary(ng-click='login()', aria-label='login')
-            | Sign In
-    div(layout='row', layout-align='space-around center')
-      a(href='/reset') Forgot password?
-    
+      md-button.md-raised.md-primary.toolbutton(ng-click='login()', aria-label='login') Sign In
+            
+    div.toolpassword(layout='row', layout-align='space-around center')
+      span(flex='')
+        a(href='/reset') Forgot your password?
+      span(flex='')
 .register
     md-content(layout='row', flex='100' style='width:100%')
       md-content(layout='column' flex='50')
-        h2 sailaabt ilani
+        h2 This is ETimesheet App.
+        h2 You can add you dailyLog,
+        h2 Send leave Request
       md-content(layout='column', flex='50')
         div(layout='row', layout-align='space-around left')
-          h1(style='text-align:left') Register
+          h1(style='text-align:left') Sign Up
         .md-warn(ng-show='error')
           small {{ error }}
         form(layout='column' name='myForm')
-          div Name
-              md-input-container
+          div.faram(layout='row', layout-align='space-around left')
+            md-input-container(layout='column', flex='30')
               input(type='text', required ng-model='profile[0].fname', placeholder='First Name', aria-label='name')
-              md-input-container
+            md-input-container(layout='column', flex='30')
               input(type='text', ng-model='profile[0].mname', placeholder='Middle Name', aria-label='name')
-              md-input-container
+            md-input-container(layout='column', flex='30')
               input(type='text', ng-model='profile[0].lname', placeholder='Last Name', aria-label='name')
-          br
-          br
 
-          div Contact      
-              md-input-container
-              md-icon(md-svg-icon='content:ic_mail_24px')
+          div.faram(layout='row', layout-align='space-around left')     
+            md-input-container(layout='column', flex='45')
               input(type='text', required ng-model='profile[0].contact', placeholder='contact', aria-label='contact') 
-          br 
-          br
-
-          div Address    
-              md-input-container
-              md-icon(md-svg-icon='content:ic_mail_24px')
+          div.faram(layout='row', layout-align='space-around left')   
+            md-input-container(layout='column', flex='45')
               input(type='text', ng-model='profile[0].address', placeholder='address', aria-label='address')
-          br
-          br
-
-          div Email     
-              md-input-container
-              md-icon(md-svg-icon='content:ic_mail_24px')
+          div.faram(layout='row', layout-align='space-around left')   
+            md-input-container(layout='column', flex='45')
               input(type='email', required  ng-model='email', placeholder='Email', aria-label='email')
-              md-input-container
-              md-icon(md-svg-icon='content:ic_mail_24px')
+            md-input-container(layout='column', flex='45')
               input(type='email', ng-model='profile[0].secondaryemail', placeholder='Secondary Email', aria-label='secondaryemail') 
-          br 
-          br
-
-          div Password     
-              md-input-container
-              md-icon(md-svg-icon='action:ic_lock_open_24px')
+          div.faram(layout='row', layout-align='space-around left')
+            md-input-container(layout='column', flex='45')
               input(type='password', ng-model='password', placeholder='password', aria-label='password')
-              md-input-container
-              md-icon(md-svg-icon='action:ic_lock_open_24px')
+            md-input-container(layout='column', flex='4540')
               input(type='password', ng-model='repassword', placeholder='Retype password', aria-label='Retype password')  
-          br
-          br
-
           md-button.md-raised.md-primary(ng-disabled="myForm.$invalid" , ng-click='register()')
             | Create Account
       span(flex='')

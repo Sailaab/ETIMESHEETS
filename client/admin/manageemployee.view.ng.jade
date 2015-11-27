@@ -1,43 +1,56 @@
-
+md-content(layout='')
+  toolbar(style='position:fixed')
 .userdetails-list(layout='row')
-      span(flex='')
-      div(layout='column')
-        h1 Users Management
-        div(layout='row', layout-padding='')
-          md-input-container(flex='65')
-            label Search
-            input(type='search', ng-model='search', placeholder='Search')
-          md-select(ng-model='orderProperty', flex='35')
-            md-option(value='1') Ascending
-            md-option(value='-1') Descending
-        
-        table
-          tr
-            th S.N
-            th
-              a(href='#', ng-click="sortType = 'name'; sortReverse = !sortReverse") Name
-            th
-              a(href='#', ng-click="sortType = 'contact'; sortReverse = !sortReverse") Contact
-            th
-              a(href='#', ng-click="sortType = 'mail'; sortReverse = !sortReverse") Email Address
-          tr(dir-paginate='user in users |  orderBy:sortType:sortReverse | itemsPerPage: perPage', total-items='usersCount.count',  current-page='page')
-            td {{$index + 1}}
-            td
-              | {{user.profile[0].fname + ' ' + user.profile[0].mname + ' ' + user.profile[0].lname}}
-            td {{user.profile[0].contact}}
-            td {{user.emails[0].address}}
-            td
-              a(href='/manageemployeeEdit/{{user._id}}')  Edit &nbsp
-              a(href='/reset/{{user._id}}') Reset
-              button(ng-click='remove(user._id)') Remove
-              button(ng-click='detail(user)')(ng-if='user.profile[0].isActive==1') Deactivate
-              button(ng-click='detail(user)')(ng-if='user.profile[0].isActive!=1') Activate
-              button(ng-click='adminverify(user._id)')(ng-if='user.profile[0].adminverify!=1') Verify
-              button(ng-click='verifyemail(user._id)')(ng-if='user.emails[0].verified!=true') Verify Email
+  div.sidebar(layout='column')
+    h3 User Management        
+    a(href='/manageemployee') Manage Employee
+    a(href="/manageorganization") Manage organizations
+    a(href='/viewleave') See Leave
+    a(href='/viewtimesheet') See Daily Logs
+    h3 List Datas Management  
+    a(href="/managedepartment") Manage Departments
+    a(href="/managedesignation") Manage Designation
+    a(href="/projects") Manage Projects  
+  div.middle(layout='column')
+    h1 Users Management
+    div(layout='row', layout-padding='')
+      md-input-container(flex='65')
+        label Search By name
+        input(type='search', ng-model='search', placeholder='Search by name')
 
-        dir-pagination-controls.md-accent(on-page-change='pageChanged(newPageNumber)')
+      md-select(ng-model='orderProperty', flex='35')
+        md-option(value='1') Ascending
+        md-option(value='-1') Descending
+    
+    table
+      tr
+        th S.N
+        th
+          a(href='#', ng-click="sortType = 'name'; sortReverse = !sortReverse") Name
+        th
+          a(href='#', ng-click="sortType = 'contact'; sortReverse = !sortReverse") Contact
+        th
+          a(href='#', ng-click="sortType = 'mail'; sortReverse = !sortReverse") Email Address
 
-        p Total number of users: {{usersCount.count}}                   
-      span(flex='')
+        th
+          a(href='#', ng-click="sortType = 'mail'; sortReverse = !sortReverse") Options          
+      tr(dir-paginate='user in users |  orderBy:sortType:sortReverse | itemsPerPage: perPage', total-items='usersCount.count',  current-page='page')
+        td {{$index + 1}}
+        td
+          | {{user.profile[0].fname + ' ' + user.profile[0].mname + ' ' + user.profile[0].lname}}
+        td {{user.profile[0].contact}}
+        td {{user.emails[0].address}}
+        td
+          a(href='/manageemployeeEdit/{{user._id}}')  Edit &nbsp
+          a(href='/reset/{{user._id}}') Reset
+          button(ng-click='remove(user._id)') Remove
+          button(ng-click='detail(user)')(ng-if='user.profile[0].isActive==1') Deactivate
+          button(ng-click='detail(user)')(ng-if='user.profile[0].isActive!=1') Activate
+          button(ng-click='adminverify(user._id)')(ng-if='user.profile[0].adminverify!=1') Verify
+          button(ng-click='verifyemail(user._id)')(ng-if='user.emails[0].verified!=true') Verify Email
 
-     
+    dir-pagination-controls.md-accent(on-page-change='pageChanged(newPageNumber)')
+
+    p Total number of users: {{usersCount.count}}                   
+  
+

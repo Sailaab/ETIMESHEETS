@@ -1,4 +1,10 @@
+md-content(layout='')
+  toolbar(style='position:fixed')
 .addTimesheet(layout='row')
+  div.sidebar(layout='column',  flex='stretch')
+    h3 User Management        
+    a(href='/timesheet') Add daily logs
+    a(href="/leave") Add leave  
   span(flex='')
   div(layout='column')
     h1 Add Timesheet

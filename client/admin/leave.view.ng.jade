@@ -1,6 +1,18 @@
+md-content(layout='')
+  toolbar
 .leave(layout='row')
-  span(flex='') 
-  
+  div.sidebar(layout='column',  flex='stretch')
+    h3 User Management        
+    a(href='/manageemployee') Manage Employee
+    a(href="/manageorganization") Manage organizations
+    a(href='/viewleave') See Leave
+    a(href='/viewtimesheet') See Daily Logs
+    h3 List Datas Management  
+    a(href="/managedepartment") Manage Departments
+    a(href="/managedesignation") Manage Designation
+    a(href="/projects") Manage Projects
+
+  span(flex='100') 
     div(layout='row', layout-padding='')
       md-input-container(flex='65')
         label Search
