@@ -11,8 +11,7 @@ md-content(layout='')
     a(href="/managedepartment") Manage Departments
     a(href="/managedesignation") Manage Designation
     a(href="/projects") Manage Projects  
-  span(flex='')
-  div(layout='column')
+  div.middle(layout='column')
     h1 Projects
     form.md-whiteframe-z1(ng-submit='save()', name='form' id='form', novalidate='', layout-padding='')
       p Details
@@ -49,6 +48,3 @@ md-content(layout='')
         md-select(ng-model='orderProperty', flex='35')
           md-option(value='1') Ascending
           md-option(value='-1') Descending
-
-      
-  span(flex='')

@@ -2,7 +2,7 @@
 
 Meteor.publish 'dailyLogs', (options, searchString) ->
   where =
-    'pname':
+    'user':
       '$regex': '.*' + (searchString or '') + '.*'
       '$options': 'i'
     'deleted': 0  

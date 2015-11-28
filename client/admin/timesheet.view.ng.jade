@@ -11,8 +11,17 @@ md-content(layout='')
     a(href="/managedepartment") Manage Departments
     a(href="/managedesignation") Manage Designation
     a(href="/projects") Manage Projects  
-  span(flex='')
-  div(layout='column')
+
+  div.middle(layout='column')
+    div(layout='row',style="border-style: solid;border-width:1px;") 
+      md-select(ng-model='search', placeholder='user',style="margin-right:30px;")
+       md-option(ng-repeat='user in users') {{ user.profile[0].fname }}
+      md-select(ng-model='project1', placeholder='project', style="margin-right:30px;")
+        md-option( ng-repeat='project in projects') {{ project.name }}
+      label Date
+        md-datepicker(ng-model='from', md-placeholder='From')
+        md-datepicker(ng-model='to', md-placeholder='To')
+      md-button.md-raised.md-primary(ng-click='find(userr,project1,from,to)',style="height:13px") Submit
     table(border=1)
       tr
         th Project Title
@@ -26,7 +35,7 @@ md-content(layout='')
         td {{dailyLog.Timetaken+'hrs'}}
         td {{dailyLog.description}}
         td {{dailyLog.user}}
-        td{{dailyLog.createdDate}}
+        td{{dailyLog.createdDate | date:'fullDate'}}
         td 
           button(ng-click='deltimesheet(dailyLog._id)') Delete
           
@@ -41,4 +50,4 @@ md-content(layout='')
     dir-pagination-controls.md-accent(on-page-change='pageChanged(newPageNumber)')
 
     p Total number of dailyLogs: {{dailyLogsCount.count}}          
-  span(flex='')
+

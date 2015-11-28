@@ -10,10 +10,10 @@ md-content(layout='')
     h3 List Datas Management  
     a(href="/managedepartment") Manage Departments
     a(href="/managedesignation") Manage Designation
-    a(href="/projects") Manage Projects
+    a(href="/projects") Manage Projects  
 
-  span(flex='100') 
-    div(layout='row', layout-padding='')
+  div.middle(layout='column', layout-padding='')
+    div(layout='row')
       md-input-container(flex='65')
         label Search
         input(type='search', ng-model='search', placeholder='Search')
@@ -30,11 +30,11 @@ md-content(layout='')
         th Asked Date
         th Approved
       tr(dir-paginate='leaveRequest in leaveRequests | itemsPerPage: perPage |  orderBy:sortType:sortReverse', total-items='leaveRequestsCount.count',  current-page='page')
-        td {{leaveRequest.startDate}}
-        td {{leaveRequest.endDate}}
+        td {{leaveRequest.startDate | date:'fullDate'}}
+        td {{leaveRequest.endDate | date:'fullDate'}}
         td {{leaveRequest.name}}
         td {{leaveRequest.user}}
-        td {{leaveRequest.askDate}}
+        td {{leaveRequest.askDate | date:'fullDate'}}
         td 
           button(ng-click='verifyleave(leaveRequest._id)') Verify It
         td 

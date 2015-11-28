@@ -12,8 +12,8 @@ md-content(layout='')
     a(href="/managedesignation") Manage Designation
     a(href="/projects") Manage Projects
 
-  span(flex='')
-  div(layout='column')
+  span(flex='20')
+  div.middle(layout='column')
     h1 Organization
     form.md-whiteframe-z1(ng-submit='save()', name='form', novalidate='', layout-padding='')
       p Add a organization
@@ -41,6 +41,8 @@ md-content(layout='')
           a(href='#', ng-click="sortType = 'name'; sortReverse = !sortReverse") Name
         th
           a(href='#', ng-click="sortType = 'address'; sortReverse = !sortReverse") Address
+        th
+          a(href='#', ng-click="sortType = 'address'; sortReverse = !sortReverse") Operations  
       tr(dir-paginate='organization in organizations | itemsPerPage: perPage |  orderBy:sortType:sortReverse', total-items='organizationsCount.count',  current-page='page')
         td {{$index + 1}}
         td {{organization.name}}
@@ -57,4 +59,3 @@ md-content(layout='')
     dir-pagination-controls.md-accent(on-page-change='pageChanged(newPageNumber)')
 
     p Total number of organization: {{organizationsCount.count}}
-  span(flex='')

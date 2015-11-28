@@ -6,8 +6,7 @@ md-content(layout='')
     a(href='/timesheet') Add daily logs
     a(href="/leave") Add leave
  
-  span(flex='')
-  div(layout='column', style='width:900px;height:')
+  div.middle(layout='column', style='width:900px;height:')
     form.md-whiteframe-z1(ng-submit='save()', name='form', novalidate='', layout-padding='')
       h1 Add Leave Request
       md-input-container
@@ -54,5 +53,3 @@ md-content(layout='')
     
 
     p Total number of leaveRequests: {{leaveRequestsCount.count}}
-    
-  span(flex='')

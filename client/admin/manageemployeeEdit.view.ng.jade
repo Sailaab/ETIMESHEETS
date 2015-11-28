@@ -11,9 +11,10 @@ md-content(layout='')
     a(href="/managedepartment") Manage Departments
     a(href="/managedesignation") Manage Designation
     a(href="/projects") Manage Projects  
-  span(flex='')
+
+  span(flex='20')
   md-whiteframe(layout='column', flex='50')
-    div(layout='row', layout-align='space-around center')
+    div.middle(layout='row', layout-align='space-around center')
       div 
       h1 Details
     form(layout='column')
@@ -57,5 +58,3 @@ md-content(layout='')
       div(layout='row')
         input.md-button(type='submit', value='Save' ng-click='save()')
         md-button(ng-href='/manageemployee') Cancel
-
-  span(flex='')

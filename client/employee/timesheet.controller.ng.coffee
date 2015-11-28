@@ -32,7 +32,7 @@ angular.module 'etimesheetApp'
     $scope.pname=name
     console.log($scope.pname)
   $scope.addRow=()->
-    $scope.Times.push({pname:$scope.newDailyLog.name,Timetaken:$scope.newDailyLog.Timetaken,description:$scope.newDailyLog.Description,deleted:0,done:false,user:$rootScope.currentUser.emails[0].address,createdDate:new Date()})
+    $scope.Times.push({pname:$scope.newDailyLog.name,Timetaken:$scope.newDailyLog.Timetaken,description:$scope.newDailyLog.Description,deleted:0,done:false,user:$rootScope.currentUser.profile[0].fname,createdDate:new Date()})
     $scope.newDailyLog =""
     console.log($scope.pname)
 

@@ -10,6 +10,10 @@ angular.module 'etimesheetApp'
     DailyLogs.find {deleted:0}, {sort:$scope.getReactively('sort')}
   $scope.projects = $scope.$meteorCollection () ->
     Projects.find {}, {sort:$scope.getReactively('sort')}
+  $scope.users = $scope.$meteorCollection ()->
+    Meteor.users.find {"profile.deleted":0}, {sort:$scope.getReactively('sort')}
+
+
   $meteor.autorun $scope, () ->
     $scope.$meteorSubscribe('dailyLogs', {
       limit: parseInt($scope.getReactively('perPage'))
@@ -18,6 +22,7 @@ angular.module 'etimesheetApp'
     }, $scope.getReactively('search')).then () ->
       $scope.dailyLogsCount = $scope.$meteorObject Counts, 'numberOfDailyLogs', false
     $scope.$meteorSubscribe('projects')
+    $scope.$meteorSubscribe('users')
 
   $meteor.session 'dailyLogsCounter'
   .bind $scope, 'page'    
@@ -28,3 +33,12 @@ angular.module 'etimesheetApp'
   $scope.$watch 'orderProperty', () ->
     if $scope.orderProperty
       $scope.sort = {name: parseInt($scope.orderProperty)}
+
+  $scope.find=(userr,project,from,to)->
+    console.log("this is user"+userr)
+    console.log ("thisis project"+project)
+    console.log ("this i from"+ from)
+    console.log ("this is to"+ to)
+    $scope.dailyLogs = $scope.$meteorCollection () ->
+      DailyLogs.find {'pname':project, 'user':userr, 'createdDate':{$gt:from, $lt:to}}, {sort:$scope.getReactively('sort')}
+    console.log($scope.dailyLogs)      

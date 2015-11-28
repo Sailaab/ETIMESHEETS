@@ -11,8 +11,7 @@ md-content(layout='')
     a(href="/managedepartment") Manage Departments
     a(href="/managedesignation") Manage Designation
     a(href="/projects") Manage Projects  
-  span(flex='')
-  div(layout='column')
+  div.middle(layout='column')
     h1 Projects
     form.md-whiteframe-z1(ng-submit='save()', name='form' id='form', novalidate='', layout-padding='')
       p Add a project
@@ -76,5 +75,3 @@ md-content(layout='')
     dir-pagination-controls.md-accent(on-page-change='pageChanged(newPageNumber)')
 
     p Total number of projects: {{projectsCount.count}}        
-
-  span(flex='')

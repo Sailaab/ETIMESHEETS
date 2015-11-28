@@ -11,8 +11,7 @@ md-content(layout='')
     a(href="/managedepartment") Manage Departments
     a(href="/managedesignation") Manage Designation
     a(href="/projects") Manage Projects  
-  span(flex='')
-  div(layout='column')
+  div.middle(layout='column')
     h1 Here are the details of the designation
     form.md-whiteframe-z1(name='form', ng-submit='save()', layout-padding='')
       md-input-container
@@ -24,4 +23,3 @@ md-content(layout='')
         input.md-button(type='submit', value='Save')
         md-button(ng-click='reset()') Reset
         md-button(ng-href='/managedesignation') Cancel
-  span(flex='')

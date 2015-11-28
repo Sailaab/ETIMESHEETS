@@ -10,7 +10,8 @@ md-content(layout='')
     h3 List Datas Management  
     a(href="/managedepartment") Manage Departments
     a(href="/managedesignation") Manage Designation
-    a(href="/projects") Manage Projects  
+    a(href="/projects") Manage Projects 
+   
   div.middle(layout='column')
     h1 Users Management
     div(layout='row', layout-padding='')
@@ -31,7 +32,10 @@ md-content(layout='')
           a(href='#', ng-click="sortType = 'contact'; sortReverse = !sortReverse") Contact
         th
           a(href='#', ng-click="sortType = 'mail'; sortReverse = !sortReverse") Email Address
-
+        th
+          a(href='#', ng-click="sortType = 'mail'; sortReverse = !sortReverse") Edit
+        th
+          a(href='#', ng-click="sortType = 'mail'; sortReverse = !sortReverse") Reset
         th
           a(href='#', ng-click="sortType = 'mail'; sortReverse = !sortReverse") Options          
       tr(dir-paginate='user in users |  orderBy:sortType:sortReverse | itemsPerPage: perPage', total-items='usersCount.count',  current-page='page')
@@ -41,8 +45,11 @@ md-content(layout='')
         td {{user.profile[0].contact}}
         td {{user.emails[0].address}}
         td
-          a(href='/manageemployeeEdit/{{user._id}}')  Edit &nbsp
+          a(href='/manageemployeeEdit/{{user._id}}')
+            i(class='fa fa-pencil' style="color:blue")
+        td      
           a(href='/reset/{{user._id}}') Reset
+        td  
           button(ng-click='remove(user._id)') Remove
           button(ng-click='detail(user)')(ng-if='user.profile[0].isActive==1') Deactivate
           button(ng-click='detail(user)')(ng-if='user.profile[0].isActive!=1') Activate

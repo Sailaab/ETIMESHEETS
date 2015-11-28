@@ -11,8 +11,7 @@ md-content(layout='')
     a(href="/managedepartment") Manage Departments
     a(href="/managedesignation") Manage Designation
     a(href="/projects") Manage Projects  
-  span(flex='')
-  div(layout='column')
+  div.middle(layout='column')
     h1 Department
     form.md-whiteframe-z1(ng-submit='save()', name='form', novalidate='', layout-padding='')
       p Add a department
@@ -56,4 +55,3 @@ md-content(layout='')
           
     //-       button(ng-click='remove(department._id)') &times;
     //- dir-pagination-controls.md-accent(on-page-change='pageChanged(newPageNumber)')
-  span(flex='') 
