@@ -53,6 +53,9 @@ angular.module('etimesheetApp').controller 'MainCtrl',( $scope,$meteor, $state, 
   $scope.register = () ->
     if($scope.password==$scope.repassword)
       Meteor.call('createUserr',$scope.email, $scope.password, $scope.profile)
+      $mdToast.show($mdToast.simple().content('Account created'))
+      document.getElementById("form").reset()
     else
       console.log("not match")  
       $mdToast.show($mdToast.simple().content('Password doesnt match'))
+

@@ -26,7 +26,7 @@ div.fbtoolbar(layout='row', layout-align='space-around center')
           h1(style='text-align:left') Sign Up
         .md-warn(ng-show='error')
           small {{ error }}
-        form(layout='column' name='myForm')
+        form(layout='column' name='myForm' id='form')
           div.faram(layout='row', layout-align='space-around left')
             md-input-container(layout='column', flex='30')
               input(type='text', required ng-model='profile[0].fname', placeholder='First Name', aria-label='name')
