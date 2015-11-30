@@ -21,7 +21,7 @@ md-content(layout='')
       label Date
         md-datepicker(ng-model='from', md-placeholder='From')
         md-datepicker(ng-model='to', md-placeholder='To')
-      md-button.md-raised.md-primary(ng-click='find(userr,project1,from,to)',style="height:13px") Submit
+      md-button.md-raised.md-primary(ng-click='find(userr,project1,from,to)',style="height:13px") Search
     table(border=1)
       tr
         th Project Title
@@ -52,8 +52,6 @@ md-content(layout='')
       md-input-container
         label Search
         input(type='search', ng-model='searchpro', placeholder='Search project')  
-
-  
                         
       md-select(ng-model='orderProperty', flex='35')
         md-option(value='1') Ascending
