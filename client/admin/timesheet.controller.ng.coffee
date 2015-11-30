@@ -19,7 +19,7 @@ angular.module 'etimesheetApp'
       limit: parseInt($scope.getReactively('perPage'))
       skip: parseInt(($scope.getReactively('page') - 1) * $scope.getReactively('perPage'))
       sort: $scope.getReactively('sort')
-    }, $scope.getReactively('search')).then () ->
+    }, $scope.getReactively('search'),$scope.getReactively('searchpro')).then () ->
       $scope.dailyLogsCount = $scope.$meteorObject Counts, 'numberOfDailyLogs', false
     $scope.$meteorSubscribe('projects')
     $scope.$meteorSubscribe('users')

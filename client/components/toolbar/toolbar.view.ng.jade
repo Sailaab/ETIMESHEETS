@@ -2,6 +2,7 @@ md-toolbar.toolbar(layout='row', layout-align='start center', layout-padding='')
   .navbar-left(layout='row', layout-align='center center')
     a(href='/dashboard')
       i(class='fa fa-home fa-3x' style="color:white")
+        md-tooltip(md-direction='right') Home
   span(flex='')
   .navbar-right(layout='row', layout-align='center center') 
     div(ng-show='$root.currentUser ') {{ $root.currentUser.profile[0].fname }}

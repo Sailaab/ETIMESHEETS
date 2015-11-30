@@ -38,11 +38,23 @@ md-content(layout='')
         td{{dailyLog.createdDate | date:'fullDate'}}
         td 
           button(ng-click='deltimesheet(dailyLog._id)') Delete
-          
+    br
+    br
+    br
+    br
+    br
+
+    div For reactive search      
     div(layout='row')
       md-input-container
+        label Search User
+        input(type='search', ng-model='search', placeholder='Search') 
+      md-input-container
         label Search
-        input(type='search', ng-model='search', placeholder='Search')         
+        input(type='search', ng-model='searchpro', placeholder='Search project')  
+
+  
+                        
       md-select(ng-model='orderProperty', flex='35')
         md-option(value='1') Ascending
         md-option(value='-1') Descending
