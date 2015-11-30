@@ -23,21 +23,20 @@ md-content(layout='')
 
     table
       tr
-        th Start Date
-        th End Date
         th Leave Name
         th Employee
+        th Start Date
+        th End Date        
         th Asked Date
-        th Approved
+        th Operations
       tr(dir-paginate='leaveRequest in leaveRequests | itemsPerPage: perPage |  orderBy:sortType:sortReverse', total-items='leaveRequestsCount.count',  current-page='page')
-        td {{leaveRequest.startDate | date:'fullDate'}}
-        td {{leaveRequest.endDate | date:'fullDate'}}
         td {{leaveRequest.name}}
         td {{leaveRequest.user}}
+        td {{leaveRequest.startDate | date:'fullDate'}}
+        td {{leaveRequest.endDate | date:'fullDate'}}
         td {{leaveRequest.askDate | date:'fullDate'}}
         td 
           button(ng-click='verifyleave(leaveRequest._id)') Verify It
-        td 
           button(ng-click='cancelleave(leaveRequest._id)') Cancel it   
 
     dir-pagination-controls.md-accent(on-page-change='pageChanged(newPageNumber)')

@@ -28,7 +28,7 @@ angular.module 'etimesheetApp'
     $scope.newLeaveRequest.owner=Meteor.userId()
     $scope.newLeaveRequest.startDate= $scope.startDate
     $scope.newLeaveRequest.endDate= $scope.endDate
-    $scope.newLeaveRequest.user= $scope.currentUser.emails[0].address
+    $scope.newLeaveRequest.user= $scope.currentUser.profile[0].fname
     $scope.newLeaveRequest.deleted=0
     $scope.leaveRequests.save $scope.newLeaveRequest
     $scope.newLeaveRequest = undefined
